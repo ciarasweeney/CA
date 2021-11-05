@@ -91,8 +91,19 @@ public class PebbleGame extends Thread {
 
             System.out.println(i);
         }*/
-        System.out.print(game.fileReader("negative_example.csv", noOfPlayers));
+        System.out.println("Please enter location of bag number 0 to load:");
+        String bagLocationA = input.nextLine();
+        ArrayList<String> bagA;
+        bagA = game.fileReader(bagLocationA, noOfPlayers);
+
+        System.out.println("Please enter location of bag number 1 to load:");
+        String bagLocationB = input.nextLine();
+        ArrayList<String> bagB;
+        bagB = game.fileReader(bagLocationB, noOfPlayers);
         
-        
+        System.out.println("Please enter location of bag number 2 to load:");
+        String bagLocationC = input.nextLine();
+        ArrayList<String> bagC;
+        bagC = game.fileReader(bagLocationC, noOfPlayers);        
     }
 }
