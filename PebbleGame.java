@@ -21,29 +21,50 @@ public class PebbleGame extends Thread {
         {
         System.exit(0);
         }
+
+        if(playerNoInt < 0){
+            System.exit(0);
+        }
         return playerNoInt;
     }
 
-    public ArrayList<String> fileReader(String filename) throws FileNotFoundException{
+    public ArrayList<String> fileReader(String filename, int noOfPlayers) throws FileNotFoundException{
 
         ArrayList<String> pebbles = new ArrayList<String>();
         Scanner sc = new Scanner(new File(filename));
         sc.useDelimiter(",");
+        String nextLine;
         while (sc.hasNext()){
-            pebbles.add(new String(sc.next()));
+            nextLine = sc.next();
+            fileCheck(nextLine);
+            pebbles.add(new String(nextLine));
         }
         sc.close();
-        //Check file size is 3x player numbers
+
+        if(pebbles.size() < (noOfPlayers*3)){
+            //warn instead of kill
+            System.exit(0);
+        }
+
         return pebbles;
     }
 
-    public boolean fileCheck(String String){
-        boolean valid = true;
-        
-        
+    public int fileCheck(String String){
+        int fileToInt = 0;
+        try {
+            fileToInt = Integer.parseInt(String);
+        }
+        catch (NumberFormatException e)
+        {
+            //warn instead of kill
+        System.exit(0);
+        }
 
-
-        return valid;
+        if(fileToInt < 0){
+            //wanr instead of kill
+            System.exit(0);
+        }
+        return fileToInt;       
     }
  
 /*    public static class PlayerInitialisation implements Runnable{
@@ -70,7 +91,7 @@ public class PebbleGame extends Thread {
 
             System.out.println(i);
         }*/
-        System.out.print(game.fileReader("example_file_1.csv"));
+        System.out.print(game.fileReader("negative_example.csv", noOfPlayers));
         
         
     }
