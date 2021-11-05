@@ -51,6 +51,8 @@ public class PebbleGame extends Thread {
 
     public int fileCheck(String String){
         int fileToInt = 0;
+        //Remove whitespace
+        String.replaceAll("\\s+","");
         try {
             System.out.println("current string:" + String);
             fileToInt = Integer.parseInt(String);
