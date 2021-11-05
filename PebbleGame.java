@@ -52,11 +52,13 @@ public class PebbleGame extends Thread {
     public int fileCheck(String String){
         int fileToInt = 0;
         try {
+            System.out.println("current string:" + String);
             fileToInt = Integer.parseInt(String);
         }
         catch (NumberFormatException e)
         {
             //warn instead of kill
+        System.out.println("Number execption:" + String);
         System.exit(0);
         }
 
