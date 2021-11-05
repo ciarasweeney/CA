@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.*;
 
@@ -20,6 +23,28 @@ public class PebbleGame extends Thread {
         }
         return playerNoInt;
     }
+
+    public ArrayList<String> fileReader(String filename) throws FileNotFoundException{
+
+        ArrayList<String> pebbles = new ArrayList<String>();
+        Scanner sc = new Scanner(new File(filename));
+        sc.useDelimiter(",");
+        while (sc.hasNext()){
+            pebbles.add(new String(sc.next()));
+        }
+        sc.close();
+        //Check file size is 3x player numbers
+        return pebbles;
+    }
+
+    public boolean fileCheck(String String){
+        boolean valid = true;
+        
+        
+
+
+        return valid;
+    }
  
 /*    public static class PlayerInitialisation implements Runnable{
 
@@ -31,7 +56,7 @@ public class PebbleGame extends Thread {
         
     }
 */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws FileNotFoundException {
 
         PebbleGame game = new PebbleGame(0);
 
@@ -45,6 +70,8 @@ public class PebbleGame extends Thread {
 
             System.out.println(i);
         }*/
-        System.out.println("test");
+        System.out.print(game.fileReader("example_file_1.csv"));
+        
+        
     }
 }
